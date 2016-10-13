@@ -1,0 +1,132 @@
+#paws{
+  background: url('../Images/paw.png');
+  background-size: 100px 80px;
+  background-repeat: repeat;
+  height: 250px;
+  position: relative;
+  top: 0;
+}
+
+.header-transparent{
+  margin-top: -250px;
+  background-image: url('../Images/Gradient.png');
+  background-position: bottom;
+  height: 250px;
+  position: relative;
+  z-index: 1;
+  border-bottom: 3px solid gold;
+}
+
+body{
+  margin: 0;
+  padding: 0;
+  background-color: lightgray;
+}
+
+h1.header-title{
+  color: gold;
+  position: static;
+  margin-top: 5px;
+  text-shadow: 2px 2px 4px #000000;
+}
+
+.head-title-div{
+  width: 325px;
+  height: 50px;
+  position: relative;
+  margin-right: auto;
+  margin-left: auto;
+  text-align: center;
+  top: 70px;
+  z-index: 2;
+  background-color: #00264b;
+  border: 3px solid gold;
+}
+
+#bodyDiv{
+  position: relative;
+  z-index: 1;
+  width: 710px;
+  height: auto;
+  margin-right: auto;
+  margin-left: auto;
+  margin-top: 20px;
+  background-color: #00264b;
+  border: 3px solid gold;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.yellow-text{
+  color: gold;
+}
+
+.navigation-bar{
+  height: 50px;
+  width: 800px;
+  position: relative;
+  top: 144px;
+  display: flex;
+  margin-left: auto;
+  margin-right: auto;
+}
+.navigation-bar a{
+  color: gold;
+  text-align: center;
+  flex: 1;
+  text-decoration: none;
+  border: 3px solid gold;
+  border-bottom: hidden;
+}
+
+.navigation-bar #mid1{
+  color: gold;
+  text-align: center;
+  flex: 1;
+  text-decoration: none;
+  border: 3px solid gold;
+  border-bottom: hidden;
+  border-left: hidden;
+  border-right: hidden;
+}
+
+.nav-links{
+  background-color: #00264b;
+}
+
+.navigation-bar #mid2{
+  color: gold;
+  text-align: center;
+  flex: 1;
+  text-decoration: none;
+  border: 3px solid gold;
+  border-bottom: hidden;
+  border-left: hidden;
+}
+
+.contact{
+  display: flex;
+  height: 100px;
+  width: auto;
+  margin-top: 20px;
+}
+
+.contact-bar{
+  flex: auto;
+  text-align: center;
+  background-color: #00264b;
+  border-top: 3px solid gold;
+}
+
+#sideBodyDiv{
+  width: 240px;
+  height: auto;
+  background-color: #00264b;
+  position: relative;
+  float: left;
+  margin-left: 20px;
+  margin-top: 20px;
+  border: 3px solid gold;
+  padding: 5px 5px;
+  text-align: center;
+}

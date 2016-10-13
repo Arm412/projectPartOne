@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <link rel="stylesheet" href="css/WebsiteCSS.css">
+    <title>Adam's Website</title>
+    <meta charset="UTF-8">
+    <meta content="author: Adam-Mitro">
+  </head>
+  <body id="body">
+    <div class="header" id="paws"></div>
+    <div class="header-transparent" id="opac">
+      <div class="head-title-div" id="headDiv">
+        <h1 class="header-title" id="head">Welcome to my site</h1>
+      </div>
+      <div class="navigation-bar">
+        <a href="" class="nav-links">
+          <p class="yellow-text">Home</p>
+        </a>
+        <a href="" id="mid2" class="nav-links">
+          <p class="yellow-text">Interests</p>
+        </a>
+        <a href="" id="mid1" class="nav-links">
+          <p class="yellow-text">Hobbies</p>
+        </a>
+        <a href="" class="nav-links">
+          <p class="yellow-text">Sports</p>
+        </a>
+      </div>
+    </div>
+    <div id="sideBodyDiv" class="body-information-div">
+      <p class="yellow-text">Select one of the color scheme choices.</p>
+      <form id="changeColors" method="get" action="">
+        <select  name="colorDropDown">
+          <option value="pitt">Pitt</option>
+          <option value="halloween">Halloween</option>
+          <option value="christmas">Christmas</option>
+        </select> <br> <br>
+        <input type="submit" name="color" value="Click to change colors" onclick="changeColorScheme(this.form.colorDropDown.value)">
+      </form>
+    </div>
+    <div class="body-information-div" id="bodyDiv">
+      <h1 class="yellow-text">About Me</h1>
+      <p class="yellow-text">Hello, my name is Adam Mitro and I created this site for my Web Applications class.</p>
+      <p class="yellow-text">I am a senior at the University of Pittsburgh and am currently majoring in Computer Science.</p>
+      <p class="yellow-text">I am just a cool guy who likes to make cool things with code.</p>
+      <p class="yellow-text">Here is a list of programming languages I am familiar with:</p>
+      <ul>
+        <li class="yellow-text">Java</li>
+        <li class="yellow-text">C</li>
+        <li class="yellow-text">Python</li>
+        <li class="yellow-text">JavaScript</li>
+      </ul>
+    </div>
+    <footer id="foot">
+      <div class="contact">
+        <nav class="contact-bar"></nav>
+        <nav class="contact-bar"></nav>
+        <nav class="contact-bar">
+          <p class="yellow-text">Social Media: </p>
+          <a href="https://www.facebook.com/adam.mitro.9">
+            <img class="black-border" alt="Facebook" src="Images/facebook.png" height="30" width="30">
+          </a>
+          <a href="https://www.instagram.com/svadam95/">
+            <img class="black-border" alt="Instagram" src="Images/instagram.png" height="30" width="30">
+          </a>
+          <a href="https://twitter.com/svadam412">
+            <img class="black-border" alt="Twitter" src="Images/twitter.png" height="30" width="30">
+          </a>
+        </nav>
+        <nav class="contact-bar"></nav>
+        <nav class="contact-bar"></nav>
+      </div>
+    </footer>
+    <script type="text/javascript" src="http://ajax.aspnetcdn.com/ajax/jquery/jquery-1.4.1.min.js"></script>
+    <script src="js/index.js"></script>
+  </body>
+</html>
