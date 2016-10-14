@@ -130,3 +130,21 @@ h1.header-title{
   padding: 5px 5px;
   text-align: center;
 }
+
+#rightBodyDiv{
+  width: 240px;
+  height: auto;
+  background-color: #00264b;
+  position: relative;
+  float: right;
+  margin-right: 20px;
+  margin-top: 20px;
+  border: 3px solid gold;
+  padding: 5px 5px;
+  text-align: center;
+  z-index: 1;
+}
+
+#hidden_name{
+  display: none;
+}

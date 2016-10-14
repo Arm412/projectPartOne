@@ -41,6 +41,13 @@ function changeColorScheme(colors){
     }
 }
 
+function placeName(name){
+    document.getElementById('name').style.display = 'none';
+    var hiddenElement = document.getElementById('hidden_name');
+    hiddenElement.style.display = 'block';
+    hiddenElement.innerHTML = 'Hello ' + name + '!';
+}
+
 $(document).ready(function(){
     $('#changeColors').click(function (e){
         e.preventDefault();

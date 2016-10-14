@@ -30,13 +30,21 @@
     <div id="sideBodyDiv" class="body-information-div">
       <p class="yellow-text">Select one of the color scheme choices.</p>
       <form id="changeColors" method="get" action="">
-        <select  name="colorDropDown">
+        <select name="colorDropDown">
           <option value="pitt">Pitt</option>
           <option value="halloween">Halloween</option>
           <option value="christmas">Christmas</option>
         </select> <br> <br>
         <input type="submit" name="color" value="Click to change colors" onclick="changeColorScheme(this.form.colorDropDown.value)">
       </form>
+    </div>
+    <div id="rightBodyDiv" class="body-information-div">
+	    <h2 id="hidden_name" class="yellow-text"></h2>
+	    <form id="name" method="get" action="">
+		    <p class="yellow-text">What is your first name?</p>
+		    <input type="text" size="10" name="fname"> <br> <br>
+		    <input type="button" name="color" value="Click!" onclick="placeName(this.form.fname.value)">
+	    </form>
     </div>
     <div class="body-information-div" id="bodyDiv">
       <h1 class="yellow-text">About Me</h1>
