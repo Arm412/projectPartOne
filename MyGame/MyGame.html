@@ -1,0 +1,247 @@
+<canvas id="main" width="750" height="600" style="border:1px solid #000000;"></canvas>
+<style>
+    canvas{ background:url(Img/black.jpg) }
+</style>
+<script>
+    var score=0;
+    var cycles=0;
+    var HEIGHT = 600;
+    var WIDTH = 750;
+    var c = document.getElementById("main");
+    var canv= c.getContext("2d");
+    canv.font='30px Arial';
+    canv.fillStyle="White";
+    var enemyList={};
+    var playerList={};
+    var startTime = Date.now();
+    var speedUpGhosts = 10000;
+    var hold=0;
+    var newGhost=2;
+    var index=0;
+    var numGhosts=1;
+    var spriteTime= Date.now();
+    var spriteChange = spriteTime+1000;
+    var img = new Image();
+    var img2 = new Image();
+    img.src="Img/Player1.png";
+    img2.src="Img/Player2.png";
+    var ghostImg = new Image();
+    var ghostImg2 = new Image();
+    ghostImg.src="Img/Ghost1.png";
+    ghostImg2.src="Img/Ghost1Flip.png";
+    function createGhost(x,y,speedX,speedY, id){
+        var ghost={
+            x:x,
+            y:y,
+            speedX:speedX,
+            speedY:speedY,
+            upgrades:0,
+            name:'G',
+            id:id,
+        }
+        enemyList[id]= ghost;
+    }
+    function updateGhost(ghost){
+        checkBounds(ghost);
+        ghost.x+=ghost.speedX;
+        ghost.y+=ghost.speedY;
+        if(Date.now()%2000<1000){
+            canv.drawImage(ghostImg,ghost.x,ghost.y,50,50);
+        }else {
+            canv.drawImage(ghostImg2,ghost.x,ghost.y,50,50);
+        }
+
+        
+    }
+    
+    function addGhost(){
+        if(hold==newGhost){
+            newGhost+=2;
+            if(numGhosts==1){
+                numGhosts+=1;
+                createGhost(650,60, -3, 4, 'G2');
+            } else
+            if(numGhosts==2){
+                createGhost(650,60, 6, -5, 'G3');
+                numGhosts+=1;
+            } else
+            if(numGhosts==3){
+                createGhost(650, 60, -5, 7, 'G4');
+                numGhosts+=1;
+            }
+        }
+    }
+    
+    function updateSprite(){
+        if(Date.now()%1000 < 500){
+            canv.drawImage(img2,player.x,player.y,50,50);
+            
+        } else {
+            canv.drawImage(img,player.x,player.y,50,50);
+        }
+        
+    }
+    
+    function update(){
+        var gameOver=checkCollision();
+        cycles++;
+        if(gameOver!=1){
+        console.log(startTime);
+        canv.clearRect(0,0,WIDTH,HEIGHT);
+        canv.fillText("Score: " + score, 20,50);
+        updateSprite();
+        player.update();
+        updateScore();
+        addGhost();
+        for(var key in enemyList){
+            updateGhost(enemyList[key]);
+        }
+        speedUp();
+        } else {
+            end();
+            clearInterval(timer);
+        }
+    }
+    function checkBounds(ghost){
+        if(ghost.x>=WIDTH-50 || ghost.x<=0){
+            ghost.speedX=-(ghost.speedX);
+        }
+        if(ghost.y>=HEIGHT-50 || ghost.y<0){
+            ghost.speedY=-(ghost.speedY);
+        }
+    }
+    function checkBoundsPlayer(player){
+        if(player.x>=WIDTH-50){
+            player.x=WIDTH-50;
+
+        }
+        if(player.y<0){
+            player.y=0;
+
+        }
+        if(player.x<=0){
+            player.x=0;
+ 
+        }
+        if(player.y>=HEIGHT-50){
+            player.y=HEIGHT-50;
+
+        }
+
+    }
+    function speedUp(){
+        if((Date.now()-startTime)>speedUpGhosts){
+            hold+=1;
+            speedUpGhosts+=10000;
+            for(var key in enemyList){
+                increaseSpeed(enemyList[key]);
+            }
+        }
+    }
+    function increaseSpeed(ghost){
+        
+            if(ghost.speedX<0 && ghost.upgrades<5){
+                ghost.speedX-=1;
+            }
+            if(ghost.speedX>0 && ghost.upgrades<5){
+                ghost.speedX+=1;
+            }
+            if(ghost.speedY<0 && ghost.upgrades<5){
+                ghost.speedY-=1;
+            }
+            if(ghost.speedY>0 && ghost.upgrades<5){
+                ghost.speedY+=1;
+            }
+        ghost.upgrades++;
+    }
+    window.addEventListener('keyup', function(event) { Key.onKeyup(event); }, false);
+    window.addEventListener('keydown', function(event) { Key.onKeydown(event); }, false);
+    var player = {
+        x:100,
+        y:100,
+        speedX:5,
+        speedY:5,
+        goDown: function(){
+            player.y+=player.speedY;   
+        },
+        goUp: function(){
+            player.y-=player.speedY;   
+        },
+        goRight: function(){
+            player.x+=player.speedX;   
+        },
+        goLeft: function(){
+            player.x-=player.speedX;   
+        },
+        update: function(){
+            checkBoundsPlayer(player);
+
+            if (Key.isDown(Key.UP)) this.goUp();
+            if (Key.isDown(Key.LEFT)) this.goLeft();
+            if (Key.isDown(Key.DOWN)) this.goDown();
+            if (Key.isDown(Key.RIGHT)) this.goRight();
+
+        }
+    }
+    
+    
+    var Key = {
+      _pressed: {},
+
+      LEFT: 37,
+      UP: 38,
+      RIGHT: 39,
+      DOWN: 40,
+
+      isDown: function(keyCode) {
+        return this._pressed[keyCode];
+      },
+
+      onKeydown: function(event) {
+        this._pressed[event.keyCode] = true;
+      },
+
+      onKeyup: function(event) {
+        delete this._pressed[event.keyCode];
+      }
+    };
+    
+    function checkCollision(){
+        
+        for(var key in enemyList){
+          if(enemyList[key].x>=player.x && enemyList[key].x<=player.x+50 && enemyList[key].y>=player.y && enemyList[key].y<=player.y+50){
+              return 1;
+          }
+          if(enemyList[key].x+50>=player.x && enemyList[key].x+50<=player.x+50 && enemyList[key].y>=player.y && enemyList[key].y<=player.y+50){
+              return 1;
+          } 
+          if(enemyList[key].x>=player.x && enemyList[key].x<=player.x+50 && enemyList[key].y+50>=player.y && enemyList[key].y+50<=player.y+50){
+              return 1;
+          }
+          if(enemyList[key].x+50>=player.x && enemyList[key].x+50<=player.x+50 && enemyList[key].y+50>=player.y && enemyList[key].y+50<=player.y+50){
+              return 1;              
+          }   
+        }
+    }
+    
+    function updateScore(){
+        if(cycles%10==0 && cycles!=0){
+            score++;
+        }
+    }
+    
+    
+    function end(){
+        canv.clearRect(0,0,WIDTH,HEIGHT);
+        canv.fillStyle="Red";
+        canv.font="100px Ariel";
+        canv.fillText("GAME OVER", (WIDTH/2)-300, HEIGHT/2);
+        canv.fillStyle="Yellow";
+        canv.font="25px Ariel";
+        canv.fillText("Your Final Score: " + score, (WIDTH/2)-100, HEIGHT*(3/4));
+    }
+    canv.fillStyle="Yellow";
+    canv.font='30px Arial';
+    createGhost(100,200, 7, 2, 'G1');
+    var timer=setInterval(update, 25);
+</script>

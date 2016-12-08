@@ -13,24 +13,35 @@
         <h1 class="header-title" id="head">Welcome to my site</h1>
       </div>
       <div class="navigation-bar">
-        <a href="" class="nav-links">
+        <a href="index.html" class="body-information-div">
           <p class="yellow-text">Home</p>
         </a>
-        <a href="" id="mid2" class="nav-links">
+        <a href="interests.html" id="mid2" class="body-information-div">
           <p class="yellow-text">Interests</p>
         </a>
-        <a href="" id="mid1" class="nav-links">
-          <p class="yellow-text">Hobbies</p>
+        <a href="Misc.html" id="mid1" class="body-information-div">
+          <p class="yellow-text">Miscellaneous</p>
         </a>
-        <a href="" class="nav-links">
+        <a href="sports.html" class="body-information-div">
           <p class="yellow-text">Sports</p>
         </a>
       </div>
     </div>
+    <a href="ContactMe.html">
+      <div class="yellow-text body-information-div" id="contactMeDiv">
+        <p>Contact Me</p>
+      </div>
+    </a>
+    <a href="ContactMe.html">
+      <div class="yellow-text body-information-div" id="contactMeDiv">
+        <p>Contact Me</p>
+      </div>
+    </a>
     <div id="sideBodyDiv" class="body-information-div">
       <p class="yellow-text">Select one of the color scheme choices.</p>
       <form id="changeColors" method="get" action="">
         <select name="colorDropDown">
+          <option value="plain">Plain</option>
           <option value="pitt">Pitt</option>
           <option value="halloween">Halloween</option>
           <option value="christmas">Christmas</option>
@@ -57,7 +68,41 @@
         <li class="yellow-text">C</li>
         <li class="yellow-text">Python</li>
         <li class="yellow-text">JavaScript</li>
+        <li class="yellow-text">PHP</li>
       </ul>
+      <div class="yellow-text" id="formHolder">
+        <form name="cards" id="cardFrom" method="post">
+          <h3>What is the first playing card that comes to mind out of a normal deck of cards?</h3>
+          <select name="number">
+            <option value="2">2</option>
+            <option value="3">3</option>
+            <option value="4">4</option>
+            <option value="5">5</option>
+            <option value="6">6</option>
+            <option value="7">7</option>
+            <option value="8">8</option>
+            <option value="9">9</option>
+            <option value="10">10</option>
+            <option value="Jack">Jack</option>
+            <option value="Queen">Queen</option>
+            <option value="King">King</option>
+            <option value="Ace">Ace</option>
+          </select>
+          <br><br><br><br><br><br>
+          <select name="suit">
+            <option value="Hearts">Hearts</option>
+            <option value="Diamonds">Diamonds</option>
+            <option value="Spades">Spades</option>
+            <option value="Clubs">Clubs</option>
+          </select>
+          <br><br><br><br><br><br>
+          <input type="button" name="getCard" value="Send" onclick="setCard(this.form.suit.value, this.form.number.value)">
+        </form>
+        <div id="cardHolder">
+          <div id="cardBack"></div>
+          <div id="cardFront"></div>
+        </div>
+      </div>
     </div>
     <footer id="foot">
       <div class="contact">
